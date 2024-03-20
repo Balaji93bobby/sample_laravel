@@ -12,6 +12,23 @@ spec:
       labels:
         app: laravel-app
     spec:
+      initContainers:
+      - name: migrate
+        image: balaji93bobby/laravel-app:latest
+        command: ['sh', '-c', 'php artisan migrate:fresh --seed']
+        env:
+        - name: DB_HOST
+          value: mysql-service
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: DB_USERNAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: DB_PASSWORD
       containers:
       - name: laravel-app
         image: balaji93bobby/laravel-app:latest
