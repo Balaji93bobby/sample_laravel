@@ -17,3 +17,16 @@ spec:
         image: balaji93bobby/laravel-app:latest
         ports:
         - containerPort: 8000
+        env:
+        - name: DB_HOST
+          value: mysql-service
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
