@@ -16,4 +16,4 @@ spec:
       - name: laravel-app
         image: balaji93bobby/laravel-app:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8000
