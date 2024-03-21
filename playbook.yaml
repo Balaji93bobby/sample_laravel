@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Apply Deployment
+    community.kubernetes.k8s:
+      kubeconfig: /home/ubuntu/kubeconfig.yaml
+      state: present
+      namespace: laravel
+      definition: "{{ lookup('file', 'deployment.yaml') }}"
+
+  - name: Apply Service
+    community.kubernetes.k8s:
+      kubeconfig: /home/ubuntu/kubeconfig.yaml
+      state: present
+      namespace: laravel
+      definition: "{{ lookup('file', 'service.yaml') }}"
