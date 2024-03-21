@@ -15,7 +15,7 @@ spec:
       initContainers:
       - name: migrate
         image: balaji93bobby/laravel-app:latest
-        command: ['sh', '-c', 'php artisan migrate:fresh --seed']
+        command: ['sh', '-c', 'php artisan migrate', 'php aritisan db:seed']
         env:
         - name: DB_HOST
           value: mysql-service
