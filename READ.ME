@@ -5,3 +5,50 @@ test2
 test3
 test4
 test5
+
+
+Install docker first
+install kubernetes
+run this command to start kubernetes
+
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+
+-----------------------------------
+only on master node
+---------------------------------
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+use this command to get join token for worker node
+kubeadm token create --print-join-command
+
+ -----------------------------------------------------
+incase if needed run these commands
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+------------------------------------------------------------
+then install flannel
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+
+------------------------------------
+install docker first
+install jave 
+install jenkins
+-------------------------------------
+get github token
+set github credentials
+set docker credentials
+-----------------------------------------
+go to ~ in th ekube server
+got to .kube
+get the config file and create a yaml in local
+create kube credentials with local
+--------------------------------
+got to github repo settings
+set webhook with the jenkins ipaddress with /github-webhook/
+
+
+
