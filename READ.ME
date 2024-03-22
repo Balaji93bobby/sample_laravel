@@ -68,11 +68,15 @@ service
 use this command to provide permission to jenkins
 
 sudo usermod -aG docker jenkins
+sudo chmod 666 /var/run/docker.sock
+ after this restart jenkins
 -----------------------------------
 then install kubectl in jenkins to use kubectl
 
 ------------------------------------
 run the build and check
+-------------------
+seed the database
 
 
 
