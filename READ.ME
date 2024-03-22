@@ -50,5 +50,21 @@ create kube credentials with local
 got to github repo settings
 set webhook with the jenkins ipaddress with /github-webhook/
 
+----------------------------------
+use this to setup ebs for mysql storage
+
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=master"
+
+
+--------------------------------
+deploy all mysql yaml
+secret
+storageclass 
+storage
+statefulset
+service
+---------------------------------
+
+
 
 
