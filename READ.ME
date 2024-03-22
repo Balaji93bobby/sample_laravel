@@ -78,5 +78,47 @@ run the build and check
 -------------------
 seed the database
 
+-------------------------
+
+install nginx and enable it
+cd to this location int he worker node
+/etc/nginx/conf.d
+
+use the belwo nginx proxy script
+server {
+    listen 80;
+    server_name domain1.example.com;
+
+    location / {
+        proxy_pass http://15.207.88.83:30080;
+    }
+}
+server {
+    listen 80;
+    server_name domain2.example.com;
+
+    location / {
+        proxy_pass http://15.207.88.83:30080;
+    }
+}
+server {
+    listen 80;
+    server_name domain3.example.com;
+
+    location / {
+        proxy_pass http://15.207.88.83:30080;
+    }
+}
+
+edit the ipaddress accordingly
+---------------------------
+
+now got to etc directory from root in local machine and edit the hosts file like the below format
+
+15.207.88.83 domain1.example.com
+15.207.88.83 domain2.example.com
+15.207.88.83 domain3.example.com
+
+
 
 
