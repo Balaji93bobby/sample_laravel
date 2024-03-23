@@ -119,6 +119,59 @@ now got to etc directory from root in local machine and edit the hosts file like
 15.207.88.83 domain2.example.com
 15.207.88.83 domain3.example.com
 
+----------------------------------------------------------------
+ansible
+
+install ansible
+restart the ec2 instance
+create a directory
+touch ansible.cfg
+use the belwo formate
+---------                                    
+[defaults]
+inventory = hosts
+host_key_checking = False
+remote_user = ubuntu
+---------------
+touch hosts in the smae directory
+ sue the belwo format with the right ip address
+
+[ec2_instances]
+ec2-1 ansible_host=3.110.223.204 ansible_ssh_private_key_file=/home/balaji/test-project/kube/ansible/ansible.pem
+
+
+--------------------------
+
+create a playbook.yml file
+
+---
+- name: install pip3 in ec2
+  hosts: ec2_instances
+  become: yes
+  tasks: 
+    - name: pip3 installation
+      apt:
+        name: python3-pip
+        state: present 
+    - name: httpd
+      apt:
+        name: apache2
+        state: present
+    - name: Enable Apache2 service
+      ansible.builtin.systemd:
+        name: apache2
+        enabled: yes
+
+    - name: Start Apache2 service
+      ansible.builtin.systemd:
+        name: apache2
+        state: started
+-------------------------------
+use ansible playbook with this file
+
+
+
+
 
 
 
